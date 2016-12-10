@@ -62,17 +62,13 @@ public class WatchUpdaterReceiver extends BroadcastReceiver implements GoogleApi
                 int weatherId = cursor.getInt(INDEX_WEATHER_ID);
                 double high = cursor.getDouble(INDEX_MAX_TEMP);
                 double low = cursor.getDouble(INDEX_MIN_TEMP);
-                //String desc = cursor.getString(INDEX_SHORT_DESC);
-
-                //int iconId = Utility.getIconResourceForWeatherCondition(weatherId);
 
                 config = new DataMap();
                 config.putString(KEY_WEATHER_TYPE, weatherId+"");
                 config.putString(KEY_MAX_TEMP, high+"");
                 config.putString(KEY_MIN_TEMP, low+"");
                 config.putString(KEY_BATTERY_PERCENATGE, "100");
-
-            }
+}
             mGoogleApiClient.connect();
         }
     }
