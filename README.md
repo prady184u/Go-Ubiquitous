@@ -1,4 +1,4 @@
-Sunshine Weather App for Watch (Udacity Nanodgree Assignment)
+P6 Ubiquitous : Sunshine Weather App for Watch (Udacity Nanodgree Assignment)
 ===================================
 
 Synchronizes weather information from OpenWeatherMap on Android Phones and Tablets. Now available for Android smartwatch.
@@ -14,9 +14,8 @@ Pre-requisites
 * Android Support CardView 22.2.0
 * Android Support Design 22.2.0
 * Android Support RecyclerView 22.2.0
-* Google Play Services GCM 8+
-* Google Play Services Wearable 8+
-* BumpTech Glide 3.5.2
+* Google Play Services GCM 10.0.1
+* Google Play Services Wearable 10.0.1
 
 
 Getting Started
