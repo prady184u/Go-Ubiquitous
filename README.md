@@ -14,8 +14,8 @@ Pre-requisites
 * Android Support CardView 22.2.0
 * Android Support Design 22.2.0
 * Android Support RecyclerView 22.2.0
-* Google Play Services GCM 10.0.1
-* Google Play Services Wearable 10.0.1
+* Google Play Services GCM 9.2.0
+* Google Play Services Wearable 9.2.0
 
 
 Getting Started
