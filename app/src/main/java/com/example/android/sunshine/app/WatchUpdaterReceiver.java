@@ -34,7 +34,7 @@ public class WatchUpdaterReceiver extends BroadcastReceiver implements GoogleApi
     public static final String KEY_MAX_TEMP = "MAX_TEMP";
     public static final String KEY_MIN_TEMP = "MIN_TEMP";
     public static final String KEY_WEATHER_TYPE = "WEATHER_TYPE";
-    public static final String KEY_BATTERY_PERCENATGE = "BATTERY_PERCENATGE";
+    public static final String KEY_BATTERY_PERCENTAGE = "BATTERY_PERCENTAGE";
     public static final String PATH_WITH_FEATURE = "/watch_face_config/Digital";
 
 
@@ -65,9 +65,9 @@ public class WatchUpdaterReceiver extends BroadcastReceiver implements GoogleApi
 
                 config = new DataMap();
                 config.putString(KEY_WEATHER_TYPE, weatherId+"");
-                config.putString(KEY_MAX_TEMP, high+"");
-                config.putString(KEY_MIN_TEMP, low+"");
-                config.putString(KEY_BATTERY_PERCENATGE, "100");
+                config.putString(KEY_MAX_TEMP,Utility.formatTemperature( context, high));
+                config.putString(KEY_MIN_TEMP, Utility.formatTemperature(context, low));
+                config.putString(KEY_BATTERY_PERCENTAGE, "100");
 }
             mGoogleApiClient.connect();
         }

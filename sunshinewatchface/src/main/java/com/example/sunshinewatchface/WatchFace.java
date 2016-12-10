@@ -330,11 +330,12 @@ public class WatchFace extends CanvasWatchFaceService {
             Log.d("WatchFace", "updateUiForKey: configKey --> " + configKey);
             Log.d("WatchFace", "updateUiForKey: config --> " + config);
             if (configKey.equals(DigitalWatchFaceUtil.KEY_MAX_TEMP)) {
-                maxTV.setText(config.getString(DigitalWatchFaceUtil.KEY_MAX_TEMP)+(char) 0x00B0 );
+                //+(char) 0x00B0 = degree
+                maxTV.setText(config.getString(DigitalWatchFaceUtil.KEY_MAX_TEMP) );
             } else if (configKey.equals(DigitalWatchFaceUtil.KEY_MIN_TEMP)) {
-                minTV.setText(config.getString(DigitalWatchFaceUtil.KEY_MIN_TEMP)+(char) 0x00B0 );
-            } else if (configKey.equals(DigitalWatchFaceUtil.KEY_BATTERY_PERCENATGE)) {
-                batteryPercent.setText(config.getString(DigitalWatchFaceUtil.KEY_BATTERY_PERCENATGE));
+                minTV.setText(config.getString(DigitalWatchFaceUtil.KEY_MIN_TEMP));
+            } else if (configKey.equals(DigitalWatchFaceUtil.KEY_BATTERY_PERCENTAGE)) {
+                batteryPercent.setText(config.getString(DigitalWatchFaceUtil.KEY_BATTERY_PERCENTAGE));
             } else if (configKey.equals(DigitalWatchFaceUtil.KEY_WEATHER_TYPE)) {
                 String id = config.getString(DigitalWatchFaceUtil.KEY_WEATHER_TYPE);
                 resId = DigitalWatchFaceUtil.getArtResourceForWeatherCondition(Integer.parseInt(id));

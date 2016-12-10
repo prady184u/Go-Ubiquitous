@@ -17,33 +17,11 @@ import com.google.android.gms.wearable.Wearable;
 public final class DigitalWatchFaceUtil {
     private static final String TAG = "DigitalWatchFaceUtil";
 
-    /**
-     * The {@link DataMap} key for { WatchFace} background color name.
-     * The color name must be a {@link String} recognized by {@link Color#parseColor}.
-     */
+
     public static final String KEY_MAX_TEMP = "MAX_TEMP";
-
-    /**
-     * The {@link DataMap} key for { WatchFace} hour digits color name.
-     * The color name must be a {@link String} recognized by {@link Color#parseColor}.
-     */
     public static final String KEY_MIN_TEMP = "MIN_TEMP";
-
-    /**
-     * The {@link DataMap} key for { WatchFace} minute digits color name.
-     * The color name must be a {@link String} recognized by {@link Color#parseColor}.
-     */
     public static final String KEY_WEATHER_TYPE = "WEATHER_TYPE";
-
-    /**
-     * The {@link DataMap} key for { WatchFace} second digits color name.
-     * The color name must be a {@link String} recognized by {@link Color#parseColor}.
-     */
-    public static final String KEY_BATTERY_PERCENATGE = "BATTERY_PERCENATGE";
-
-    /**
-     * The path for the {@link DataItem} containing { WatchFace} configuration.
-     */
+    public static final String KEY_BATTERY_PERCENTAGE = "BATTERY_PERCENTAGE";
     public static final String PATH_WITH_FEATURE = "/watch_face_config/Digital";
 
 
@@ -129,6 +107,7 @@ public final class DigitalWatchFaceUtil {
                 if (dataItemResult.getDataItem() != null) {
                     DataItem configDataItem = dataItemResult.getDataItem();
                     DataMapItem dataMapItem = DataMapItem.fromDataItem(configDataItem);
+                    Log.d(TAG, "DataItemResultCallback + check dataMapItem : " + dataMapItem);
                     DataMap config = dataMapItem.getDataMap();
                     Log.d(TAG, "DataItemResultCallback + check config : " + config);
                     mCallback.onConfigDataMapFetched(config);
@@ -167,6 +146,8 @@ public final class DigitalWatchFaceUtil {
         }
         return -1;
     }
+
+
 
     private DigitalWatchFaceUtil() { }
 }
