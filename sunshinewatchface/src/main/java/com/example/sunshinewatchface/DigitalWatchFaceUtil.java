@@ -72,6 +72,7 @@ public final class DigitalWatchFaceUtil {
      */
     public static void fetchConfigDataMap(final GoogleApiClient client,
             final FetchConfigDataMapCallback callback) {
+        Log.d("DigitalWatchFaceUtil", "fetchConfigDataMap" + client);
         Wearable.NodeApi.getLocalNode(client).setResultCallback(
                 new ResultCallback<NodeApi.GetLocalNodeResult>() {
                     @Override
@@ -95,6 +96,7 @@ public final class DigitalWatchFaceUtil {
      * If the config DataItem doesn't exist, it's created.
      */
     public static void putConfigDataItem(GoogleApiClient googleApiClient, DataMap newConfig) {
+        Log.d( TAG,"putConfigDataItem : datamap " + newConfig);
         PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(PATH_WITH_FEATURE);
         putDataMapRequest.setUrgent();
         DataMap configToPut = putDataMapRequest.getDataMap();
@@ -120,11 +122,15 @@ public final class DigitalWatchFaceUtil {
 
         @Override
         public void onResult(DataApi.DataItemResult dataItemResult) {
+            Log.d(TAG, "DataItemResultCallback + onresult dataItemResult : " + dataItemResult);
+            Log.d(TAG, "DataItemResultCallback + onresult status : " + dataItemResult.getStatus().isSuccess());
             if (dataItemResult.getStatus().isSuccess()) {
+                Log.d(TAG, "DataItemResultCallback + check dataItem : " + dataItemResult.getDataItem());
                 if (dataItemResult.getDataItem() != null) {
                     DataItem configDataItem = dataItemResult.getDataItem();
                     DataMapItem dataMapItem = DataMapItem.fromDataItem(configDataItem);
                     DataMap config = dataMapItem.getDataMap();
+                    Log.d(TAG, "DataItemResultCallback + check config : " + config);
                     mCallback.onConfigDataMapFetched(config);
                 } else {
                     mCallback.onConfigDataMapFetched(new DataMap());

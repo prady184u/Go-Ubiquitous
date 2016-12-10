@@ -51,6 +51,7 @@ public class WatchUpdaterReceiver extends BroadcastReceiver implements GoogleApi
                 .addOnConnectionFailedListener(this)
                 .build();
         if (intent.getAction().equals(SunshineSyncAdapter.ACTION_DATA_UPDATED)) {
+            Log.v("WatchUpdaterReceiver", "SunshineSyncAdapter.ACTION_DATA_UPDATED: " + context );
             String locationQuery = Utility.getPreferredLocation(context);
             Uri weatherUri = WeatherContract.WeatherEntry.buildWeatherLocationWithDate(locationQuery, System.currentTimeMillis());
 

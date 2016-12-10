@@ -303,19 +303,21 @@ public class WatchFace extends CanvasWatchFaceService {
         }
 
         private void updateConfigDataItemAndUiOnStartup() {
+            Log.d("WatchFace", "updateConfigDataItemAndUiOnStartup");
             DigitalWatchFaceUtil.fetchConfigDataMap(mGoogleApiClient,
                     new DigitalWatchFaceUtil.FetchConfigDataMapCallback() {
                         @Override
                         public void onConfigDataMapFetched(DataMap startupConfig) {
+                            Log.d("WatchFace", " : DigitalWatchFaceUtil interface impl : onConfigDataMapFetched : datamap : " + startupConfig);
                             // If the DataItem hasn't been created yet or some keys are missing,
                             // use the default values.
                            // setDefaultValuesForMissingConfigKeys(startupConfig);
                             DigitalWatchFaceUtil.putConfigDataItem(mGoogleApiClient, startupConfig);
 
-        updateUiForConfigDataMap(startupConfig);
-    }
-}
-);
+                            updateUiForConfigDataMap(startupConfig);
+                        }
+                    }
+                    );
         }
 
         /**
@@ -345,8 +347,10 @@ public class WatchFace extends CanvasWatchFaceService {
         }
 
         private void updateUiForConfigDataMap(final DataMap config) {
+            Log.d("WatchFace", "updateUiForConfigDataMap : " + config);
             boolean uiUpdated = false;
             for (String configKey : config.keySet()) {
+                Log.d("WatchFace", "updateUiForConfigDataMap : configKey --> " + configKey);
                 if (!config.containsKey(configKey)) {
                     continue;
                 }
@@ -355,6 +359,7 @@ public class WatchFace extends CanvasWatchFaceService {
                 }
             }
             if (uiUpdated) {
+                Log.d("WatchFace", "updateUiForConfigDataMap : uiUpdated " + uiUpdated);
                 invalidate();
             }
         }
@@ -373,6 +378,7 @@ public class WatchFace extends CanvasWatchFaceService {
 
         @Override
         public void onDataChanged(DataEventBuffer dataEventBuffer) {
+            Log.d("WatchFace", "OnDataChange :" + dataEventBuffer );
             for (DataEvent dataEvent : dataEventBuffer) {
                 if (dataEvent.getType() != DataEvent.TYPE_CHANGED) {
                     continue;
